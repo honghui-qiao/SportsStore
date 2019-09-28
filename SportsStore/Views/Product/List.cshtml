@@ -2,11 +2,15 @@
 
 @foreach (var p in Model.Products)
 {
-    <div>
-      <h3>@p.Name</h3>
-      <div>@p.Description</div>
-      <h4>@p.Price.ToString("c")</h4>
-    </div>
+    @await Html.PartialAsync("ProductSummary", p)
 }
 
-<div page-model="@Model.PagingInfo" page-action="List"></div>
+<div page-model="@Model.PagingInfo"
+     page-action="List"
+     page-class-enabled="true"
+     page-class="page-item"
+     page-class-normal="page-link"
+     page-class-selected="active"
+     page-url-category="@Model.CurrentCategory"
+     class="pagination">
+</div>
